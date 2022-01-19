@@ -1,0 +1,30 @@
+
+        Class Program {
+            getNumber() {
+                Return 1;
+            }
+
+            main() {
+                Var a,b: Int;
+                a = a + 1;
+
+                If (a > 0){
+                    a = a + 1;
+                    b = b + 2;
+                    Var e, k: Boolean = True, False;
+                    Var f: String = "Hello";
+                    Val My1stCons, My2ndCons: Int = 1 + 5, 2;
+                    Var $x, $y : Int = 0, 0;
+                    Var c: Float;
+                    Var c,d: Array[Int, 5];
+                    c[0] = 1;
+                    c[1] = 1;
+                }
+                ##Else {
+                    Foreach (i In 1 .. 100 By 2) {
+                        Out.printInt(i);
+                    }
+                }##
+            }
+        }
+        

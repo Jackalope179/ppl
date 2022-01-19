@@ -1,0 +1,11 @@
+- Int ở parser chưa bỏ \_
+- Array type không bỏ INT, FLOAT được
+- Tham số truyền vào 1 method có dc là static k
+- Constructor và Destructor không có Return
+- Truy xuất 1 thuộc tính của 1 class trong block statement không được
+- instance atrribute access
+- 2 method cùng tên không cho phép
+- Integer literal xét TH >= 1 ở Array
+- Lower bound = 1 là [Int, 0] hay A[0]
+- Câu lệnh tạo object New X()
+- Không có function call, chỉ có method call

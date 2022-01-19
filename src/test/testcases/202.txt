@@ -1,3 +1,7 @@
-int main () {
-            putIntLn(4);
-        }
+
+            Class Shape {
+            $getNumOfShape( {
+                Return self.length * self.width;
+                    }
+                }
+        
