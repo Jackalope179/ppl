@@ -1,0 +1,9 @@
+
+        Class Number{
+            Var a: Int;
+            a = a + 1;
+            getValue(){
+                Return a;
+            }
+        }
+        

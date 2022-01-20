@@ -1,1 +1,1 @@
-",Test,case,string,',",<EOF>
+Test case string ',<EOF>

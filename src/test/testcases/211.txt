@@ -1,0 +1,19 @@
+
+        Class Number{
+            Var a: Int;
+            getValue() {
+            If(Self.a < 0){
+                a = a + 1;
+            }
+            Elseif (a < 10){
+                a = a - 1;
+            }
+            Elseif (a < 100){
+                a = a * 2;
+            }
+            Else {
+             Out.printInt(a);   
+            }
+            }            
+        }
+        

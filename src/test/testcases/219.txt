@@ -1,0 +1,11 @@
+
+        Class Shape {
+            getValue()(){
+                Var a: Int = 5;
+                {
+                    Out.printInt(a);
+                    Out.printInt(a);
+                }
+            }
+        }
+        

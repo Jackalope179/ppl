@@ -1,0 +1,8 @@
+
+        Class Number{
+            Var a: Int;
+            getValue() {
+            Val $Nonstatic: Int = 5;
+            }
+        }
+        

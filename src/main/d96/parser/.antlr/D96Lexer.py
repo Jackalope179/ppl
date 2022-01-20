@@ -170,7 +170,7 @@ def serializedATN():
         buf.write("\u012c\7p\2\2\u012c\u012d\7w\2\2\u012d\u012e\7g\2\2\u012e")
         buf.write("$\3\2\2\2\u012f\u0130\7K\2\2\u0130\u0131\7h\2\2\u0131")
         buf.write("&\3\2\2\2\u0132\u0133\7G\2\2\u0133\u0134\7n\2\2\u0134")
-        buf.write("\u0135\7u\2\2\u0135\u0136\7g\2\2\u0136\u0137\7K\2\2\u0137")
+        buf.write("\u0135\7u\2\2\u0135\u0136\7g\2\2\u0136\u0137\7k\2\2\u0137")
         buf.write("\u0138\7h\2\2\u0138(\3\2\2\2\u0139\u013a\7G\2\2\u013a")
         buf.write("\u013b\7n\2\2\u013b\u013c\7u\2\2\u013c\u013d\7g\2\2\u013d")
         buf.write("*\3\2\2\2\u013e\u013f\7H\2\2\u013f\u0140\7q\2\2\u0140")
@@ -346,7 +346,7 @@ class D96Lexer(Lexer):
     modeNames = [ "DEFAULT_MODE" ]
 
     literalNames = [ "<INVALID>",
-            "':'", "'..'", "'Self'", "'Break'", "'Continue'", "'If'", "'ElseIf'", 
+            "':'", "'..'", "'Self'", "'Break'", "'Continue'", "'If'", "'Elseif'", 
             "'Else'", "'Foreach'", "'True'", "'False'", "'Array'", "'In'", 
             "'Int'", "'Float'", "'Boolean'", "'String'", "'Return'", "'Null'", 
             "'Class'", "'Val'", "'Var'", "'Constructor'", "'Destructor'", 

@@ -1,0 +1,16 @@
+
+        Class Shape {
+            Var a:B = New B();
+            getValue(){
+                Var a: Int = 5;
+                If( 1 <= (2 && 5) >= 6 || 3 == 3){
+                    a = 2;
+                }
+                Elseif( 1<= 2 && 5 >= 6){
+                    a=2;
+                    a = New B();
+                    Var a: $B = New B();
+                }
+            }
+        }
+        

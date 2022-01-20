@@ -79,7 +79,7 @@ class ParserSuite(unittest.TestCase):
             }
         }
         """
-        expect = "successful"
+        expect = "Error on line 17 col 24: $x"
         self.assertTrue(TestParser.test(input,expect,205))
 
     def test6(self):
@@ -119,4 +119,242 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input,expect,207))
     
+    '''-----------Test Statement------------'''
+
+    def test8(self):
+        input = """
+        Var NoninClass: Int = 5;
+        """
+        expect = "Error on line 2 col 8: Var"
+        self.assertTrue(TestParser.test(input,expect,208))
+
+    def test9(self):
+        input = """
+        Class Number{
+            Var a: Int;
+            getValue() {
+            Val $Nonstatic: Int = 5;
+            }
+        }
+        """
+        expect = "Error on line 5 col 16: $Nonstatic"
+        self.assertTrue(TestParser.test(input,expect,209))
+
+    def test10(self):
+        input = """
+        Class Number{
+            Var a: Array[Array[Int, 5], 5];
+
+            print(a,b: Int; c: String){
+                Out.printInt(a[0][0]);
+            }
+
+            getValue() {
+            a = Array("Hello", "Hi", "HelloWorld");
+            Var Nonstatic: Int = 5;
+            Val var1, var2, var3: Int = 5, 5 > 6, Self.a;
+            Self.print(e,d,g);
+            }
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input,expect,210))
+
+    def test11(self):
+        input = """
+        Class Number{
+            Var a: Int;
+            getValue() {
+            If(Self.a < 0){
+                a = a + 1;
+            }
+            Elseif (a < 10){
+                a = a - 1;
+            }
+            Elseif (a < 100){
+                a = a * 2;
+            }
+            Else {
+             Out.printInt(a);   
+            }
+            }            
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input,expect,211))
+
+    def test12(self):
+        input = """
+        Class Number{
+            Var a: Int;
+            getValue() {
+            Foreach(i In 1 .. 10 By 2){
+                Out.printInt(i);
+                If(i > 5){
+                    Return 1+1;
+                    Break;
+                }
+                Else{
+                    Return Self.a;
+                    Continue;
+                }
+                Return "Hello";
+            }
+            }            
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input,expect,212))
     
+    def test14(self):
+        input = """
+        Class Number{
+            Var a: Int;
+            Return a;
+        }
+        """
+        expect = "Error on line 4 col 12: Return"
+        self.assertTrue(TestParser.test(input,expect,214))
+
+    def test15(self):
+        input = """
+        Class Number{
+            Var a: Int;
+            a = a + 1;
+            getValue(){
+                Return a;
+            }
+        }
+        """
+        expect = "Error on line 4 col 14: ="
+        self.assertTrue(TestParser.test(input,expect,215))
+    
+    def test16(self):
+        """Simple program: int main() {} """
+        input = """
+            Class Shape {
+                Val $numOfShape: Int = 10;
+                Val immutableAttribute: Int = 5;
+                Var length, width: Int;
+
+                $getNumOfShape() {
+                    return 100;
+                }
+            }
+        """
+        expect = "Error on line 8 col 27: 100"
+        self.assertTrue(TestParser.test(input,expect,216))
+    
+    def test17(self):
+        input = """
+        Class A{
+            Var value: Int;
+            getValue() {
+                Out.printInt(value);
+            }
+        }
+        Class Shape {
+            Var a: Array[Int,5] = Array(1,2,3,4,5);
+            Val $b: Array[Array[Int,2],3] = Array(
+                Array(1,2),
+                Array(3,4),
+                Array(5,6)
+            );
+
+            $printStatic(){
+                Out.printInt(a);
+            }
+
+            printArray() {
+                Var a: A = New A();
+                ## Get static method ##
+                Shape::$printStatic();
+
+                ## Get static attribute ##
+                Shape::$b;
+                
+                ## Get non-static method ##
+                a.getValue();
+                
+                ## Get non-static attribute ##
+                a.value;
+            }
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input,expect,217))
+
+    def test18(self):
+        input = """
+        Class Shape {
+            getValue(){
+                Var a: Int = 5;
+                {
+                    Out.printInt(a);
+                    Out.printInt(a);
+                }
+            }
+        }
+        """
+        expect = "Error on line 5 col 16: {"
+        self.assertTrue(TestParser.test(input,expect,218))
+
+    def test19(self):
+        input = """
+        Class Shape {
+            getValue()(){
+                Var a: Int = 5;
+                {
+                    Out.printInt(a);
+                    Out.printInt(a);
+                }
+            }
+        }
+        """
+        expect = "Error on line 3 col 22: ("
+        self.assertTrue(TestParser.test(input,expect,219))
+
+    def test20(self):
+        input = """
+        Class Shape {
+            getValue(()){
+            }
+        }
+        """
+        expect = "Error on line 3 col 21: ("
+        self.assertTrue(TestParser.test(input,expect,220))
+
+    def test21(self):
+        input = """
+        Class Shape {
+            getValue(){
+                Foreach(i In 1 .. 10 By 2){
+                    Foreach(j In 1 .. 10 By 2){
+                        Out.printInt(i,j);
+                        }
+                }
+            }
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input,expect,221))
+
+    def test22(self):
+        input = """
+        Class Shape {
+            Var a:B = New B();
+            getValue(){
+                Var a: Int = 5;
+                If( 1 <= (2 && 5) >= 6 || 3 == 3){
+                    a = 2;
+                }
+                Elseif( 1<= 2 && 5 >= 6){
+                    a=2;
+                    a = New B();
+                    Var a: $B = New B();
+                }
+            }
+        }
+        """
+        expect = "Error on line 12 col 27: $B"
+        self.assertTrue(TestParser.test(input,expect,222))

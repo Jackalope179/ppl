@@ -1,0 +1,11 @@
+
+        Class Shape {
+            getValue(){
+                Foreach(i In 1 .. 10 By 2){
+                    Foreach(j In 1 .. 10 By 2){
+                        Out.printInt(i,j);
+                        }
+                }
+            }
+        }
+        

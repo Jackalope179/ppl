@@ -1,0 +1,6 @@
+
+        Class Number{
+            Var a: Int;
+            Return a;
+        }
+        

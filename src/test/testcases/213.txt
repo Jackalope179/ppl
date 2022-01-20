@@ -1,0 +1,10 @@
+
+        Class Number{
+            Var a: Int;
+            getValue() {
+            While(a < 10){
+                a = a + 1;
+            }
+            }            
+        }
+        

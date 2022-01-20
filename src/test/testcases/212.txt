@@ -1,0 +1,19 @@
+
+        Class Number{
+            Var a: Int;
+            getValue() {
+            Foreach(i In 1 .. 10 By 2){
+                Out.printInt(i);
+                If(i > 5){
+                    Return 1+1;
+                    Break;
+                }
+                Else{
+                    Return Self.a;
+                    Continue;
+                }
+                Return "Hello";
+            }
+            }            
+        }
+        

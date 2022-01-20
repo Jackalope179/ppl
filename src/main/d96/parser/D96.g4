@@ -35,23 +35,12 @@ nr_stmt: assg_stm
 	| break_stm
 	| continue_stm
 	| invocatoin_stm
-	| blk_stmt
-	| decl_stm ; 
-
+	| decl_stm;
 paramslist: params SEMI paramslist | params;
 params: non_st_idlist ':' type_name;
 non_st_idlist:  ID COMMA idlist | ID ;
 
 /*-------------------------------------------- Test 1------------------------------------------ */
-bool_expr: expr;
-ari_expr: expr;
-string_expr: expr;
-rel_expr: expr;
-idx_expr: expr;
-mem_access_expr: expr;
-ob_creation_expr: expr;
-self_expr: expr;
-
 
 expr:  expr  (STR_CONCAT | STR_COMPARE) expr | expr1;
 expr1: expr1 (EQ |  NEQ | LT | GT | LTE | GTE) expr1 | expr2;
@@ -69,15 +58,12 @@ expr8: expr8 DOT expr9
 	| expr8 ACCESS expr9 LB (exprlist| ) RB
 	| expr9;
 expr9: NEW ID LB (exprlist | ) RB | operands;
-// expr10: SELF ACCESS operands | operands;
-operands: literals
+operands: LB expr RB
+		| literals
 		| ID
 		| SID
 		| SELF
-		| LB expr RB
 		;
-
-
 
 /*----------------------------------------- Statement -------------------------------------------*/
 stmt: assg_stm 
@@ -87,25 +73,22 @@ stmt: assg_stm
 	| continue_stm
 	| return_stm
 	| invocatoin_stm
-	| blk_stmt
-	| decl_stm ; 
+	| decl_stm;
 
-decl_stm: attr_decl;
+decl_stm: (VAL | VAR ) non_st_idlist ':' type_name ( '=' exprlist | ) SEMI;
 
 // /* Assignment statement */
 
 assg_stm: assg_term '=' expr SEMI;
-assg_term: ID | SID | idx_expr;
+assg_term: expr;
 
 
 // /* If statement */
-if_stm: IF LB bool_expr RB blk_stmt else_if_stm;
+if_stm: IF LB expr RB blk_stmt else_if_stm;
 
-else_if_stm: ELSEIF bool_expr blk_stmt else_if_stm
-			| ELSE stmt
+else_if_stm: ELSEIF LB expr RB blk_stmt else_if_stm
+			| ELSE blk_stmt
 			| ; 
-
-// /* For/In statement */
 
 // /* for statement */
 for_stm: FOREACH LB (ID | SID) IN INT '..' INT (BY INT | ) RB blk_stmt;
@@ -120,11 +103,10 @@ continue_stm: CONTINUE SEMI;
 return_stm: RETURN expr SEMI;
 
 // //  Invocation statement
-invocatoin_stm: ID DOT (SID | ID) SEMI
-			  | (SID | ID) ACCESS SID SEMI
-			  | ID DOT (SID | ID) LB (exprlist | ) RB SEMI
+invocatoin_stm: expr DOT (SID | ID) SEMI
+			  | ID ACCESS SID SEMI
+			  | expr DOT (SID | ID) LB (exprlist | ) RB SEMI
 			  | ID ACCESS SID LB (exprlist | ) RB SEMI;
-
 
 // /* Block statement */
 blk_stmt: LP (stmtlist| ) RP;
@@ -211,7 +193,7 @@ SELF: 'Self';
 BREAK: 'Break';
 CONTINUE: 'Continue';
 IF: 'If';
-ELSEIF: 'ElseIf';
+ELSEIF: 'Elseif';
 ELSE: 'Else';
 FOREACH: 'Foreach';
 TRUE: 'True';

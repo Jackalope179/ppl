@@ -1,0 +1,35 @@
+
+        Class A{
+            Var value: Int;
+            getValue() {
+                Out.printInt(value);
+            }
+        }
+        Class Shape {
+            Var a: Array[Int,5] = Array(1,2,3,4,5);
+            Val $b: Array[Array[Int,2],3] = Array(
+                Array(1,2),
+                Array(3,4),
+                Array(5,6)
+            );
+
+            $printStatic(){
+                Out.printInt(a);
+            }
+
+            printArray() {
+                Var a: A = New A();
+                ## Get static method ##
+                Shape::$printStatic();
+
+                ## Get static attribute ##
+                Shape::$b;
+                
+                ## Get non-static method ##
+                a.getValue();
+                
+                ## Get non-static attribute ##
+                a.value;
+            }
+        }
+        

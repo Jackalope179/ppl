@@ -1,0 +1,16 @@
+
+        Class Number{
+            Var a: Array[Array[Int, 5], 5];
+
+            print(a,b: Int; c: String){
+                Out.printInt(a[0][0]);
+            }
+
+            getValue() {
+            a = Array("Hello", "Hi", "HelloWorld");
+            Var Nonstatic: Int = 5;
+            Val var1, var2, var3: Int = 5, 5 > 6, Self.a;
+            Self.print(e,d,g);
+            }
+        }
+        
