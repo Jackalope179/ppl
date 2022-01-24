@@ -1,1 +1,1 @@
-"Test case string '"
+Int Float Boolean String Return

@@ -1,1 +1,1 @@
-Test case string ',<EOF>
+Int,Float,Boolean,String,Return,<EOF>

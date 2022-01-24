@@ -1,0 +1,4 @@
+   Class c1 : c2{
+            Var shape3: Boolean = a +. b > 2 ==. "h"; 
+        }
+    

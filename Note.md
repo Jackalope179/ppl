@@ -9,3 +9,7 @@
 - Lower bound = 1 là [Int, 0] hay A[0]
 - Câu lệnh tạo object New X()
 - Không có function call, chỉ có method call
+- scalar variable
+- Return phải xuất hiện trong hàm
+- The type of first expression must be a class type
+- Tại sao phải có self mà k để ID

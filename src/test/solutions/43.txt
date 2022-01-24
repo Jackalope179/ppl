@@ -1,1 +1,1 @@
-Test case string '",<EOF>
+Foreach,True,False,Array,In,<EOF>

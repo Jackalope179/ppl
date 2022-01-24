@@ -1,1 +1,1 @@
-Hello,<EOF>
+0x123,<EOF>

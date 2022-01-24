@@ -1,1 +1,1 @@
- "Hello new line \a\b\c"
+==. +. . ::
